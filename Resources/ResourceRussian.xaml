@@ -11,6 +11,7 @@
     <system:String x:Key="Info">Информация</system:String>
     <system:String x:Key="Exit">Выход</system:String>
     <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Chinse">中文</system:String>
     <system:String x:Key="Russian">Русский</system:String>
     <system:String x:Key="File">Файл</system:String>
     <system:String x:Key="Save">Сохранить</system:String>

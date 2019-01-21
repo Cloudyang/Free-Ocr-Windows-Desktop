@@ -44,7 +44,7 @@ namespace a9t9Ocr
             else 
                 _rightSideViewModel.OcrLanguages = new ObservableCollection<string>(new List<string>());
 
-            _rightSideViewModel.CurrentOcrLanguage = "eng";
+            _rightSideViewModel.CurrentOcrLanguage = "chi_sim";
 
             CloseWindowCommand = new RelayCommand(CloseWindow);
             MaximizeWindowCommand = new RelayCommand(MaximizeWindow);
@@ -93,6 +93,9 @@ namespace a9t9Ocr
                     break;
                 case "ru-RU":
                     dict.Source = new Uri(@"..\Resources\ResourceRussian.xaml", UriKind.Relative);
+                    break;
+                case "zh-CN":
+                    dict.Source = new Uri(@"..\Resources\ResourceChinese.xaml", UriKind.Relative);
                     break;
                 default:
                     dict.Source = new Uri(@"..\Resources\ResourceChinese.xaml", UriKind.Relative);

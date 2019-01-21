@@ -4,14 +4,14 @@
     <system:String x:Key="BeginOcr">开始扫描</system:String>
     <system:String x:Key="OpenImages">打开图像</system:String>
     <system:String x:Key="SaveText">保存文本</system:String>
-    <system:String x:Key="SaveWord">保存单词</system:String>
+    <system:String x:Key="SaveWord">保存Word</system:String>
     <system:String x:Key="RecognizeAll">处理所有页</system:String>
     <system:String x:Key="Language">选择语言</system:String>
     <system:String x:Key="About">关于</system:String>
     <system:String x:Key="Info">信息</system:String>
     <system:String x:Key="Exit">退出</system:String>
-    <system:String x:Key="Chinse">中文</system:String>
     <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Chinse">中文</system:String>
     <system:String x:Key="Russian">Русский</system:String>
     <system:String x:Key="File">文件</system:String>
     <system:String x:Key="Save">保存</system:String>

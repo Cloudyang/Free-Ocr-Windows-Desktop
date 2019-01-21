@@ -19,7 +19,7 @@ namespace a9t9Ocr
             Height = Properties.Settings.Default.Height;
             Width = Properties.Settings.Default.Width;
 
-            var tess = new TesseractOcr("eng");
+            var tess = new TesseractOcr("chi_sim");
             var leftVm = new LeftSideViewModel(tess);
             LeftSideControl.DataContext = leftVm;
 

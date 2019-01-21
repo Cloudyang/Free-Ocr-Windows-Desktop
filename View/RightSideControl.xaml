@@ -46,11 +46,13 @@
                 </ToggleButton.Resources>
             </ToggleButton>
             <Label Content="Ocr Language" VerticalAlignment="Center"></Label>
-            <ComboBox ItemsSource="{Binding OcrLanguages}" VerticalContentAlignment="Center"
-                              Height="25"
+            <ComboBox VerticalContentAlignment="Center"
                               Background="GhostWhite"
                               Opacity="0.8"
-                              SelectedValue="{Binding CurrentOcrLanguage}"></ComboBox>
+                              SelectedValue="{Binding CurrentOcrLanguage}" Margin="0,4,0,3">
+                <ComboBoxItem Content="eng" DataContext="{DynamicResource English}"/>
+                <ComboBoxItem Content="chi-sim" DataContext="{DynamicResource Chinse}"/>
+            </ComboBox>
         </StackPanel>
         <TextBox Text="{Binding RecognizedText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  TextWrapping="Wrap"

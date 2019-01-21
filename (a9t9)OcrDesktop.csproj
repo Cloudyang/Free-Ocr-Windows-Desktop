@@ -219,17 +219,35 @@
   <ItemGroup>
     <Resource Include="maximize.png" />
     <Resource Include="minimize.png" />
-    <Resource Include="Icons\photo1.png" />
-    <Resource Include="Icons\process1.png" />
-    <Resource Include="Icons\save1.png" />
-    <Resource Include="Icons\left.png" />
-    <Resource Include="Icons\right.png" />
-    <Resource Include="Icons\word.png" />
+    <Resource Include="Icons\photo1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\process1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\save1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\word.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="close1.png" />
     <Resource Include="close2.png" />
-    <Resource Include="Icons\pdf.png" />
-    <Resource Include="Icons\save2.png" />
-    <Resource Include="Icons\book.png" />
+    <Resource Include="Icons\pdf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\save2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\book.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="1425244695_283051.ico" />
     <Resource Include="introtext.jpg" />
     <Resource Include="testimage.tif" />
