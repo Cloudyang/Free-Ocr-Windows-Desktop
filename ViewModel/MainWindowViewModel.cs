@@ -95,7 +95,7 @@ namespace a9t9Ocr
                     dict.Source = new Uri(@"..\Resources\ResourceRussian.xaml", UriKind.Relative);
                     break;
                 default:
-                    dict.Source = new Uri(@"..\Resources\ResourceEnglish.xaml", UriKind.Relative);
+                    dict.Source = new Uri(@"..\Resources\ResourceChinese.xaml", UriKind.Relative);
                     break;
             }
             _windowForLanguageSupport.Resources.MergedDictionaries.Add(dict);

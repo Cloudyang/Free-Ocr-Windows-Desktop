@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="BeginOcr">开始扫描</system:String>
+    <system:String x:Key="OpenImages">打开图像</system:String>
+    <system:String x:Key="SaveText">保存文本</system:String>
+    <system:String x:Key="SaveWord">保存单词</system:String>
+    <system:String x:Key="RecognizeAll">处理所有页</system:String>
+    <system:String x:Key="Language">选择语言</system:String>
+    <system:String x:Key="About">关于</system:String>
+    <system:String x:Key="Info">信息</system:String>
+    <system:String x:Key="Exit">退出</system:String>
+    <system:String x:Key="Chinse">中文</system:String>
+    <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Russian">Русский</system:String>
+    <system:String x:Key="File">File</system:String>
+    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="OpenPdf">打开PDF</system:String>
+    <system:String x:Key="OpenLanguageFolder">打开语言目录</system:String>
+    <system:String x:Key="InstallLanguage">如何安装新语言</system:String>
+    <system:String x:Key="OpenWebSite">获取在线信息</system:String>
+    <system:String x:Key="Help">帮助</system:String>
+</ResourceDictionary>
