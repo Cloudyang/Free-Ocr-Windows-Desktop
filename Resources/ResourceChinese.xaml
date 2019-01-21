@@ -13,8 +13,8 @@
     <system:String x:Key="Chinse">中文</system:String>
     <system:String x:Key="English">English</system:String>
     <system:String x:Key="Russian">Русский</system:String>
-    <system:String x:Key="File">File</system:String>
-    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="File">文件</system:String>
+    <system:String x:Key="Save">保存</system:String>
     <system:String x:Key="OpenPdf">打开PDF</system:String>
     <system:String x:Key="OpenLanguageFolder">打开语言目录</system:String>
     <system:String x:Key="InstallLanguage">如何安装新语言</system:String>
