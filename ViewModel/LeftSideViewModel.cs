@@ -114,7 +114,7 @@ namespace a9t9Ocr
         public delegate void ExitEventChanged(object sender, EventArgs args);
 
         private readonly ITesseractOrc _tesseractOrc;
-        private readonly string _pathToTestData = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata"; 
+        private readonly string _pathToTestData = @"tessdata"; // Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata"; 
         readonly ImageConverter _converter = new ImageConverter();
         public LeftSideViewModel(ITesseractOrc orc)
         {
@@ -340,7 +340,7 @@ namespace a9t9Ocr
         {
             try
             {
-                var path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata";
+                var path = @"tessdata"; //Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata";
                 if (!Directory.Exists(path))
                 {
                     MessageBox.Show("Folder for Tesseract language training data not found. I looked at "+path);
