@@ -32,8 +32,6 @@ namespace a9t9Ocr
         public List<string> PathToConvertedImages(string pathToPdf)
         {
             var resultImages = new List<string>();
-            try
-            {
                 const int desiredXDpi = 96;
                 const int desiredYDpi = 96;
 
@@ -59,12 +57,6 @@ namespace a9t9Ocr
                     img.Save(pageFilePath, ImageFormat.Tiff);
                     resultImages.Add(pageFilePath);
                 }
-
-            }
-            catch 
-            {
-                //ignored    
-            }
 
             return resultImages;
         }

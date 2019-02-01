@@ -97,11 +97,11 @@
     <Reference Include="DocX">
       <HintPath>.\DocX.dll</HintPath>
     </Reference>
-    <Reference Include="Ghostscript.NET">
-      <HintPath>packages\Ghostscript.NET.1.2.0\lib\net40\Ghostscript.NET.dll</HintPath>
+    <Reference Include="Ghostscript.NET, Version=1.2.1.0, Culture=neutral, PublicKeyToken=f85051de34525b59, processorArchitecture=MSIL">
+      <HintPath>packages\Ghostscript.NET.1.2.1\lib\net40\Ghostscript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="GongSolutions.Wpf.DragDrop">
-      <HintPath>packages\gong-wpf-dragdrop.0.1.4.3\lib\net40\GongSolutions.Wpf.DragDrop.dll</HintPath>
+    <Reference Include="GongSolutions.Wpf.DragDrop, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\gong-wpf-dragdrop.1.1.0\lib\net45\GongSolutions.Wpf.DragDrop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
@@ -218,6 +218,71 @@
     <None Include="tessdata\chi_sim.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="tessdata\chi_sim\chi_sim.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.numbers">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.punc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.training_text">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.training_text.bigram_freqs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.training_text.unigram_freqs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.unicharambigs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\chi_sim.wordlist">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\desired_characters">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim\forbidden_characters">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim_vert.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim_vert\chi_sim_vert.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim_vert\desired_characters">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_sim_vert\forbidden_characters">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_tra.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_tra\chi_tra.config" />
+    <None Include="tessdata\chi_tra\chi_tra.numbers" />
+    <None Include="tessdata\chi_tra\chi_tra.params-model" />
+    <None Include="tessdata\chi_tra\chi_tra.punc" />
+    <None Include="tessdata\chi_tra\chi_tra.training_text" />
+    <None Include="tessdata\chi_tra\chi_tra.training_text.bigram_freqs" />
+    <None Include="tessdata\chi_tra\chi_tra.training_text.unigram_freqs" />
+    <None Include="tessdata\chi_tra\chi_tra.unicharambigs" />
+    <None Include="tessdata\chi_tra\chi_tra.wordlist" />
+    <None Include="tessdata\chi_tra\desired_characters" />
+    <None Include="tessdata\chi_tra\forbidden_characters" />
+    <None Include="tessdata\chi_tra_vert.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\chi_tra_vert\chi_tra_vert.config" />
+    <None Include="tessdata\chi_tra_vert\desired_characters" />
+    <None Include="tessdata\chi_tra_vert\forbidden_characters" />
+    <None Include="tessdata\COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="tessdata\eng.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -278,10 +343,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="x64\" />
-    <Folder Include="x86\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Tesseract.3.3.0\build\Tesseract.targets" Condition="Exists('packages\Tesseract.3.3.0\build\Tesseract.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

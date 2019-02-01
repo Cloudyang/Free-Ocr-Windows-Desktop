@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="DictionaryStyle.xaml" />
                 <ResourceDictionary Source="../Resources/ResourceRussian.xaml" />
                 <ResourceDictionary Source="../Resources/ResourceEnglish.xaml" />
+                <ResourceDictionary Source="../Resources/ResourceChinese.xaml" />
                 <ResourceDictionary>
                     <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"></BooleanToVisibilityConverter>
                 </ResourceDictionary>
