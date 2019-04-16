@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Ghostscript.NET;
-using Ghostscript.NET.Rasterizer;
+
 
 namespace a9t9Ocr
 {
@@ -32,8 +31,8 @@ namespace a9t9Ocr
         public List<string> PathToConvertedImages(string pathToPdf)
         {
             var resultImages = new List<string>();
-                const int desiredXDpi = 96;
-                const int desiredYDpi = 96;
+                //const int desiredXDpi = 96;
+                //const int desiredYDpi = 96;
 
                 string inputPdfPath = pathToPdf;
                 var directoryInfo = new FileInfo(inputPdfPath).Directory;
@@ -43,20 +42,38 @@ namespace a9t9Ocr
                 _oldDirectory = outputPath;
                 ClearTempImages();
 
-                var lastInstalledVersion = GhostscriptVersionInfo.GetLastInstalledVersion(
-                    GhostscriptLicense.GPL | GhostscriptLicense.AFPL,
-                    GhostscriptLicense.GPL);
+            //var lastInstalledVersion = GhostscriptVersionInfo.GetLastInstalledVersion(
+            //    GhostscriptLicense.GPL | GhostscriptLicense.AFPL,
+            //    GhostscriptLicense.GPL);
 
-                var rasterizer = new GhostscriptRasterizer();
-                rasterizer.Open(inputPdfPath, lastInstalledVersion, false);
+            //var rasterizer = new GhostscriptRasterizer();
+            //rasterizer.Open(inputPdfPath, lastInstalledVersion, false);
 
-                for (int pageNumber = 1; pageNumber <= rasterizer.PageCount; pageNumber++)
-                {
-                    string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + pageNumber + @".tiff");
-                    Image img = rasterizer.GetPage(desiredXDpi, desiredYDpi, pageNumber);
-                    img.Save(pageFilePath, ImageFormat.Tiff);
-                    resultImages.Add(pageFilePath);
-                }
+            //for (int pageNumber = 1; pageNumber <= rasterizer.PageCount; pageNumber++)
+            //{
+            //    string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + pageNumber + @".tiff");
+            //    Image img = rasterizer.GetPage(desiredXDpi, desiredYDpi, pageNumber);
+            //    img.Save(pageFilePath, ImageFormat.Tiff);
+            //    resultImages.Add(pageFilePath);
+            //}
+
+
+            //using (FileStream fs = new FileStream(pathToPdf, FileMode.Open))
+            //{
+            //    Document document = new Document(fs);
+            //    for (int i = 0; i < document.Pages.Count; i++)
+            //    {
+            //        string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + i + @".tiff");
+
+            //        Page currentPage = document.Pages[i];
+            //        using (Bitmap bitmap = currentPage.Render((int)currentPage.Width, (int)currentPage.Height, new RenderingSettings()))
+            //        {
+            //            bitmap.Save(pageFilePath, ImageFormat.Tiff);
+            //            resultImages.Add(pageFilePath);
+            //        }
+            //    }
+            //}
+
 
             return resultImages;
         }

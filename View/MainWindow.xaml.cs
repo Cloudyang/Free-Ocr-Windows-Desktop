@@ -20,7 +20,8 @@ namespace a9t9Ocr
             Width = Properties.Settings.Default.Width;
 
             var tess = new TesseractOcr("chi_sim");
-            var leftVm = new LeftSideViewModel(tess);
+            var baiduAI = new BaiduAIOcr("chi_sim");
+            var leftVm = new LeftSideViewModel(tess,baiduAI);
             LeftSideControl.DataContext = leftVm;
 
             var rightVm = new RightSideViewModel(tess);

@@ -18,6 +18,7 @@ namespace a9t9Ocr
         public ICommand OpenImageCommand { get; set; }
         public ICommand OpenPdfCommand { get; set; }
         public ICommand BeginOcrCommand { get; set; }
+        public ICommand BaiduAIOcrCommand { get; set; }
         public ICommand NextImageCommand { get; set; }
         public ICommand PrevImageCommand { get; set; }
         public ICommand ExitCommand { get; set; }
@@ -114,14 +115,17 @@ namespace a9t9Ocr
         public delegate void ExitEventChanged(object sender, EventArgs args);
 
         private readonly ITesseractOrc _tesseractOrc;
+        private readonly ITesseractOrc _baiduAIOrc;
         private readonly string _pathToTestData = @"tessdata"; // Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata"; 
         readonly ImageConverter _converter = new ImageConverter();
-        public LeftSideViewModel(ITesseractOrc orc)
+        public LeftSideViewModel(ITesseractOrc orc, ITesseractOrc baiduAIorc)
         {
             _tesseractOrc = orc;
+            _baiduAIOrc = baiduAIorc;
             OpenImageCommand = new RelayCommand(OpenImages);
             OpenPdfCommand = new RelayCommand(OpenPdf);
             BeginOcrCommand = new RelayCommand(BeginOcr);
+            BaiduAIOcrCommand = new RelayCommand(BaiduAIOcr);
             NextImageCommand = new RelayCommand(NextImage);
             PrevImageCommand = new RelayCommand(PrevImage);
 
@@ -235,6 +239,62 @@ namespace a9t9Ocr
                         if (tempText == null)
                             return;
                     
+                        recognizedText.Add(tempText);
+                    }
+
+                    _recognizedText = string.Empty;
+                    foreach (var text in recognizedText)
+                    {
+                        _recognizedText = string.Concat(_recognizedText, text);
+                    }
+                    RecognizedText = _recognizedText;
+                    OnRecoginedEvent(_recognizedText);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace);
+                }
+            });
+        }
+
+        public void BaiduAIOcr(object obj)
+        {
+            if (!Directory.Exists(_pathToTestData))
+            {
+                MessageBox.Show("Ooops. Test image not found (no big deal, everything else should still work fine).\nI looked in: " + _pathToTestData);
+                return;
+            }
+
+
+            if (_imagesList.Count == 0)
+                return;
+
+            Task.Factory.StartNew(delegate
+            {
+                try
+                {
+                    RecognizedText = @"OCR started... ";
+                    OnRecoginedEvent(_recognizedText);
+
+                    var recognizedText = new List<string>();
+                    if (IsRecognizeAll)
+                    {
+                        //var tempText = _tesseractOrc.RecognizeFewImages(_imagesList);
+                        //recognizedText.AddRange(tempText.Where(text => text != null));
+                        int cnt = 1;
+                        foreach (var imageClass in _imagesList)
+                        {
+                            OnRecoginedEvent(String.Format("Image {0} of {1}", cnt++, _imagesList.Count));
+                            var tt = _baiduAIOrc.RecognizeOneImage(imageClass);
+                            recognizedText.Add(tt);
+                        }
+                    }
+                    else
+                    {
+                        var tempText = _baiduAIOrc.RecognizeOneImage(_currentImage);
+                        if (tempText == null)
+                            return;
+
                         recognizedText.Add(tempText);
                     }
 

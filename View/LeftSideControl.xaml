@@ -7,7 +7,7 @@
              xmlns:wpfFreeOcr="clr-namespace:a9t9Ocr"
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=System"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="300" d:DesignWidth="420"
              Loaded="LeftSideControl_OnLoaded">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -55,6 +55,16 @@
                           Background="LightGreen"
                                   Template="{StaticResource ResourceKey=ToggleButtonTemplate}"
                                   Command="{Binding BeginOcrCommand}">
+                <ToggleButton.Resources>
+                    <ImageSource x:Key="Img">
+                        ../Icons/process1.png
+                    </ImageSource>
+                </ToggleButton.Resources>
+            </ToggleButton>
+            <ToggleButton Content="{DynamicResource BaiduAIOcr}"
+                          Background="LightGreen"
+                                  Template="{StaticResource ResourceKey=ToggleButtonTemplate}"
+                                  Command="{Binding BaiduAIOcrCommand}">
                 <ToggleButton.Resources>
                     <ImageSource x:Key="Img">
                         ../Icons/process1.png

@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="BeginOcr">Start Ocr</system:String>
+    <system:String x:Key="BaiduAIOcr">BaiduAI</system:String>
     <system:String x:Key="OpenImages">Open Images</system:String>
     <system:String x:Key="SaveText">Save as Text</system:String>
     <system:String x:Key="SaveWord">Save as Word</system:String>

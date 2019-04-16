@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="BeginOcr">开始扫描</system:String>
+    <system:String x:Key="BaiduAIOcr">百度识别</system:String>
     <system:String x:Key="OpenImages">打开图像</system:String>
     <system:String x:Key="SaveText">保存文本</system:String>
     <system:String x:Key="SaveWord">保存Word</system:String>
