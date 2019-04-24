@@ -317,14 +317,6 @@ namespace a9t9Ocr
         {
             try
             {
-                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\gs") &&
-                    !Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\gs"))
-                {
-                    MessageBox.Show("Missing Ghost Script");
-                    return;
-                }
-
-
                 var path = OpenPdfFileDialog();
                 if (string.IsNullOrEmpty(path))
                     return;
@@ -369,13 +361,6 @@ namespace a9t9Ocr
             var fi = new FileInfo(fileList[0]);
             if (fi.Extension == ".pdf")
             {
-                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\gs") &&
-                    !Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\gs"))
-                {
-                    MessageBox.Show("Missing Ghost Script");
-                    return;
-                }
-
                 var fileNames = _converter.PathToConvertedImages(fileList[0]);
                 ImagesList.Clear();
 

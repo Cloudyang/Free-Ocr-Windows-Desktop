@@ -101,7 +101,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
                             <Border Background="GhostWhite" CornerRadius="2"/>
-                            <Image Name="Normal" Source="/WpfFreeOcr;component/Icons/left.png"/>
+                            <Image Name="Normal" Source="../Icons/left.png"/>
                         </Grid>
                     </ControlTemplate>
                 </Button.Template>
@@ -121,7 +121,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
                             <Border Background="GhostWhite" CornerRadius="2"/>
-                            <Image Name="Normal" Source="/WpfFreeOcr;component/Icons/right.png"/>
+                            <Image Name="Normal" Source="../Icons/right.png"/>
                         </Grid>
                     </ControlTemplate>
                 </Button.Template>

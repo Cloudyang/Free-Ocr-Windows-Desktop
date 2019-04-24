@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-
+using PdfiumViewer;
 
 namespace a9t9Ocr
 {
@@ -31,10 +31,10 @@ namespace a9t9Ocr
         public List<string> PathToConvertedImages(string pathToPdf)
         {
             var resultImages = new List<string>();
-                //const int desiredXDpi = 96;
-                //const int desiredYDpi = 96;
+            const int desiredXDpi = 96;
+            const int desiredYDpi = 96;
 
-                string inputPdfPath = pathToPdf;
+            string inputPdfPath = pathToPdf;
                 var directoryInfo = new FileInfo(inputPdfPath).Directory;
                 if (directoryInfo == null) return resultImages;
 
@@ -57,22 +57,18 @@ namespace a9t9Ocr
             //    resultImages.Add(pageFilePath);
             //}
 
-
-            //using (FileStream fs = new FileStream(pathToPdf, FileMode.Open))
-            //{
-            //    Document document = new Document(fs);
-            //    for (int i = 0; i < document.Pages.Count; i++)
-            //    {
-            //        string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + i + @".tiff");
-
-            //        Page currentPage = document.Pages[i];
-            //        using (Bitmap bitmap = currentPage.Render((int)currentPage.Width, (int)currentPage.Height, new RenderingSettings()))
-            //        {
-            //            bitmap.Save(pageFilePath, ImageFormat.Tiff);
-            //            resultImages.Add(pageFilePath);
-            //        }
-            //    }
-            //}
+            FileStream pdf = File.Open(pathToPdf, FileMode.Open);
+            using(var document = PdfDocument.Load(pdf))
+            {
+                for (int i = 0; i < document.PageCount; i++) {
+                    using (var img = document.Render(i, desiredXDpi, desiredYDpi,true))
+                    {
+                        string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + i + @".tiff");
+                        img.Save(pageFilePath, ImageFormat.Tiff);
+                        resultImages.Add(pageFilePath);
+                    }
+                }
+            }
 
 
             return resultImages;
