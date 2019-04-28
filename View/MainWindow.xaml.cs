@@ -21,7 +21,7 @@ namespace a9t9Ocr
 
             var tess = new TesseractOcr("chi_sim");
             var baiduAI = new BaiduAIOcr("chi_sim");
-            var leftVm = new LeftSideViewModel(tess,baiduAI);
+            var leftVm = new LeftSideViewModel(this,tess,baiduAI);
             LeftSideControl.DataContext = leftVm;
 
             var rightVm = new RightSideViewModel(tess);

@@ -113,14 +113,21 @@ namespace a9t9Ocr.View
                         {
                             System.IO.File.Delete(filename);
                         }
-                        bitmap.Save(filename, ImageFormat.Jpeg);
-                        this.Close();
+                        bitmap.Save(filename, ImageFormat.Jpeg);                        
                     }
                 }
             }
-            catch (Exception ex)
+            finally 
             {
-                MessageBox.Show(ex.StackTrace);
+                this.Close();
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
             }
         }
     }

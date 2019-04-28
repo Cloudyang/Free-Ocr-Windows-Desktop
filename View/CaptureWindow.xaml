@@ -7,6 +7,7 @@
         Background="Black"
         Opacity="0.1"
         WindowState="Maximized"
+        KeyDown="Window_KeyDown"
         MouseDown="CaptureWindow_MouseDown"
         MouseMove="CaptureWindow_MouseMove">
     <Canvas x:Name="CaptureCanvas">

@@ -109,6 +109,23 @@ namespace a9t9Ocr
                 OnPropertyChanged("IsBaiduAI");
             }
         }
+        
+        private bool _isHide=true;
+        public bool IsHide
+        {
+            get
+            {
+                return _isHide;
+            }
+            set
+            {
+                if (_isHide == value)
+                    return;
+                _isHide = value;
+                // ReSharper disable once RedundantArgumentDefaultValue
+                OnPropertyChanged("IsHide");
+            }
+        }
 
         private String _recognizedText;
         public String RecognizedText
@@ -125,7 +142,9 @@ namespace a9t9Ocr
             }
         }
 
+        
         public event RecognizedTextChanged RecoginedEvent;
+        
 
         #endregion
 
@@ -133,12 +152,14 @@ namespace a9t9Ocr
 
         public delegate void ExitEventChanged(object sender, EventArgs args);
 
+        private readonly Window currentWindow;
         private readonly ITesseractOrc _tesseractOrc;
         private readonly ITesseractOrc _baiduAIOrc;
         private readonly string _pathToTestData = @"tessdata"; // Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\(a9t9)OcrDesktop\tessdata"; 
         readonly ImageConverter _converter = new ImageConverter();
-        public LeftSideViewModel(ITesseractOrc orc, ITesseractOrc baiduAIorc)
+        public LeftSideViewModel(Window win,ITesseractOrc orc, ITesseractOrc baiduAIorc)
         {
+            currentWindow = win;
             _tesseractOrc = orc;
             _baiduAIOrc = baiduAIorc;
             OpenImageCommand = new RelayCommand(OpenImages);
@@ -156,7 +177,7 @@ namespace a9t9Ocr
             OpenLanguageFolderCommand = new RelayCommand(OpenLanguageFolder);
 
             ImagesList = new List<ImageClass>();
-
+            
             CurrentImage = new ImageClass
             {
                 Image = new BitmapImage(new Uri(@"pack://application:,,,/(a9t9)OcrDesktop;component/introtext.jpg",
@@ -172,6 +193,10 @@ namespace a9t9Ocr
             {
                 ImagesList.Clear();
                 var wincut = new CaptureWindow();
+                if (_isHide)
+                {
+                    currentWindow.Hide();
+                }
                 wincut.ShowDialog();
                 var filenames =new List<string> { Environment.CurrentDirectory + "\\cutPic.jpg" };
 
@@ -181,6 +206,8 @@ namespace a9t9Ocr
                 CurrentImageNumber = 0;
 
                 NextImage(obj);
+
+                currentWindow.Show();
                 if (_isBaiduAI)
                 {
                     BaiduAIOcr(obj);

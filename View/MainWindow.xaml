@@ -114,6 +114,12 @@
                             Margin="5 0 0 0"
                             Background="White"
                             Style="{StaticResource CustomScheckBoxStyle}"/>
+                        <CheckBox VerticalAlignment="Center"
+                            Content="默认隐藏当前窗口"
+                            IsChecked="{Binding IsHide}"
+                            Margin="5 0 0 0"
+                            Background="White"
+                            Style="{StaticResource CustomScheckBoxStyle}"/>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Save}"
                               x:Name="MenuItemSave"
