@@ -31,8 +31,8 @@ namespace a9t9Ocr
         public List<string> PathToConvertedImages(string pathToPdf)
         {
             var resultImages = new List<string>();
-            const int desiredXDpi = 96;
-            const int desiredYDpi = 96;
+            const int desiredXDpi = 300;
+            const int desiredYDpi = 300;
 
             string inputPdfPath = pathToPdf;
                 var directoryInfo = new FileInfo(inputPdfPath).Directory;
@@ -58,13 +58,14 @@ namespace a9t9Ocr
             //}
 
             FileStream pdf = File.Open(pathToPdf, FileMode.Open);
-            using(var document = PdfDocument.Load(pdf))
+            using (var document = PdfDocument.Load(pdf))
             {
-                for (int i = 0; i < document.PageCount; i++) {
-                    using (var img = document.Render(i, desiredXDpi, desiredYDpi,true))
+                for (int i = 0; i < document.PageCount; i++)
+                {
+                    using (var img = document.Render(i, desiredXDpi, desiredYDpi, true))
                     {
-                        string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + i + @".tiff");
-                        img.Save(pageFilePath, ImageFormat.Tiff);
+                        string pageFilePath = Path.Combine(outputPath + _count + @"\", @"Page-" + i + @".jpg");
+                        img.Save(pageFilePath, ImageFormat.Jpeg);
                         resultImages.Add(pageFilePath);
                     }
                 }

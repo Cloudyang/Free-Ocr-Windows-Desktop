@@ -48,7 +48,7 @@ namespace a9t9Ocr
             try
             {
                 if (!File.Exists(pathToImage))
-                    return "Image not found";
+                    return "图片文件不存在!";
                 var image = File.ReadAllBytes(pathToImage);
                 // 如果有可选参数
                 var options = new Dictionary<string, object>{

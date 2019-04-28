@@ -17,7 +17,7 @@ namespace a9t9Ocr
                 try
                 {
                     var uri = new Uri(name);
-                    var bitmap = new BitmapImage(uri);
+                    var bitmap = new BitmapImage(uri).Clone();
                     imagesList.Add(
                         new ImageClass
                         {

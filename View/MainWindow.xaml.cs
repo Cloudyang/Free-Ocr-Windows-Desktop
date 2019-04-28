@@ -33,6 +33,7 @@ namespace a9t9Ocr
             MenuItemFile.DataContext = leftVm;
             MenuItemHelp.DataContext = leftVm;
             MenuItemSave.DataContext = rightVm;
+            MenuItemCut.DataContext = leftVm;
   //not yet    MenuItemLanguage.DataContext = rightVm;
         }
         private void WindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

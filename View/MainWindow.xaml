@@ -21,6 +21,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/ResourceRussian.xaml" />
                 <ResourceDictionary Source="../Resources/ResourceEnglish.xaml" />
+                <ResourceDictionary Source="../Resources/ResourceChinese.xaml" />
                 <ResourceDictionary Source="DictionaryStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -100,6 +101,19 @@
                         <MenuItem Header="{DynamicResource Exit}" 
                                   Command="{Binding ExitCommand}" 
                                   FontSize="13" />
+                    </MenuItem>
+                    <MenuItem Header="屏幕截图"
+                              x:Name="MenuItemCut"
+                              FontSize="13">
+                        <MenuItem Header="开启剪屏" 
+                                  Command="{Binding OpenCutCommand}" 
+                                  FontSize="13" />
+                        <CheckBox VerticalAlignment="Center"
+                            Content="默认自动百度识别"
+                            IsChecked="{Binding IsBaiduAI}"
+                            Margin="5 0 0 0"
+                            Background="White"
+                            Style="{StaticResource CustomScheckBoxStyle}"/>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Save}"
                               x:Name="MenuItemSave"

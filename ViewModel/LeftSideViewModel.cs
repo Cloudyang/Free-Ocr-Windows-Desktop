@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using a9t9Ocr.View;
 using GongSolutions.Wpf.DragDrop;
 
 namespace a9t9Ocr
@@ -17,6 +18,7 @@ namespace a9t9Ocr
         #region Commands
         public ICommand OpenImageCommand { get; set; }
         public ICommand OpenPdfCommand { get; set; }
+        public ICommand OpenCutCommand { get; set; }
         public ICommand BeginOcrCommand { get; set; }
         public ICommand BaiduAIOcrCommand { get; set; }
         public ICommand NextImageCommand { get; set; }
@@ -91,6 +93,23 @@ namespace a9t9Ocr
             }
         }
 
+        private bool _isBaiduAI;
+        public bool IsBaiduAI
+        {
+            get
+            {
+                return _isBaiduAI;
+            }
+            set
+            {
+                if (_isBaiduAI == value)
+                    return;
+                _isBaiduAI = value;
+                // ReSharper disable once RedundantArgumentDefaultValue
+                OnPropertyChanged("IsBaiduAI");
+            }
+        }
+
         private String _recognizedText;
         public String RecognizedText
         {
@@ -124,6 +143,7 @@ namespace a9t9Ocr
             _baiduAIOrc = baiduAIorc;
             OpenImageCommand = new RelayCommand(OpenImages);
             OpenPdfCommand = new RelayCommand(OpenPdf);
+            OpenCutCommand = new RelayCommand(OpenCut);
             BeginOcrCommand = new RelayCommand(BeginOcr);
             BaiduAIOcrCommand = new RelayCommand(BaiduAIOcr);
             NextImageCommand = new RelayCommand(NextImage);
@@ -145,6 +165,33 @@ namespace a9t9Ocr
             };
             ImagesList.Add(CurrentImage);
         }
+
+        public void OpenCut(object obj)
+        {
+            try
+            {
+                ImagesList.Clear();
+                var wincut = new CaptureWindow();
+                wincut.ShowDialog();
+                var filenames =new List<string> { Environment.CurrentDirectory + "\\cutPic.jpg" };
+
+                var imageLoader = new ImageLoader();
+                ImagesList.AddRange(imageLoader.LoadImages(filenames));
+
+                CurrentImageNumber = 0;
+
+                NextImage(obj);
+                if (_isBaiduAI)
+                {
+                    BaiduAIOcr(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
         public void IncrementCurrentImage()
         {
             CurrentImageNumber++;
@@ -200,13 +247,13 @@ namespace a9t9Ocr
             {
                 MessageBox.Show(ex.StackTrace);
             }
+     
         }
         public void BeginOcr(object obj)
         {
             if (!Directory.Exists(_pathToTestData))
             {
-                MessageBox.Show("Ooops. Test image not found (no big deal, everything else should still work fine).\nI looked in: "+ _pathToTestData);
-                return;
+                Directory.CreateDirectory(_pathToTestData);
             }
 
 
@@ -217,7 +264,7 @@ namespace a9t9Ocr
             {
                 try
                 {
-                    RecognizedText = @"OCR started... ";
+                    RecognizedText = @"准备扫描识别... ";
                     OnRecoginedEvent(_recognizedText);
 
                     var recognizedText = new List<string>();
@@ -261,8 +308,7 @@ namespace a9t9Ocr
         {
             if (!Directory.Exists(_pathToTestData))
             {
-                MessageBox.Show("Ooops. Test image not found (no big deal, everything else should still work fine).\nI looked in: " + _pathToTestData);
-                return;
+                Directory.CreateDirectory(_pathToTestData);
             }
 
 
@@ -273,7 +319,7 @@ namespace a9t9Ocr
             {
                 try
                 {
-                    RecognizedText = @"OCR started... ";
+                    RecognizedText = @"准备扫描识别... ";
                     OnRecoginedEvent(_recognizedText);
 
                     var recognizedText = new List<string>();
