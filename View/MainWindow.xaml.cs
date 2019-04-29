@@ -40,5 +40,14 @@ namespace a9t9Ocr
         {
             DragMove();
         }
+
+        private void CutOpen_KeyUP(object sender,KeyEventArgs e)
+        {
+            if (e.Key == Key.PrintScreen)
+            {
+                var leftVm = LeftSideControl.DataContext as LeftSideViewModel;
+                leftVm?.OpenCut(sender);
+            }
+        }
     }
 }

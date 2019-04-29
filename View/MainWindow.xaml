@@ -15,6 +15,7 @@
         WindowStartupLocation="CenterScreen"
         x:Name="TableWindow"
         MouseLeftButtonDown="WindowMouseLeftButtonDown"
+        KeyUp="CutOpen_KeyUP"
         Loaded="MainWindow_OnLoaded">
     <Window.Resources>
         <ResourceDictionary>
