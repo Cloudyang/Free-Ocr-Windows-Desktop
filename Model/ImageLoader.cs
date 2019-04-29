@@ -11,13 +11,23 @@ namespace a9t9Ocr
     {
         public List<ImageClass> LoadImages(List<string> paths)
         {
+            BitmapImage bitmap;
             var imagesList = new List<ImageClass>();
+
+            var count = paths.Count();
             foreach (var name in paths)
             {
                 try
                 {
                     var uri = new Uri(name);
-                    var bitmap = new BitmapImage(uri).Clone();
+                    if (count == 1)
+                    {
+                        bitmap = new BitmapImage(uri).CloneCurrentValue();
+                    }
+                    else
+                    {
+                        bitmap = new BitmapImage(uri);
+                    }
                     imagesList.Add(
                         new ImageClass
                         {
