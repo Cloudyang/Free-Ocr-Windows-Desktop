@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using a9t9Ocr.ViewModel;
 
 namespace a9t9Ocr.View
 {
@@ -97,10 +98,13 @@ namespace a9t9Ocr.View
 
         private void CaptureScreen(double x, double y, double width, double height)
         {
-            int ix = Convert.ToInt32(x);
-            int iy = Convert.ToInt32(y);
-            int iw = Convert.ToInt32(width);
-            int ih = Convert.ToInt32(height);
+            PresentationSource source = PresentationSource.FromVisual(this);
+            var scaleX = source.CompositionTarget.TransformToDevice.M11;
+            var scaleY = source.CompositionTarget.TransformToDevice.M22;
+            int ix = Convert.ToInt32(x * scaleX);
+            int iy = Convert.ToInt32(y * scaleY);
+            int iw = Convert.ToInt32(width * scaleX);
+            int ih = Convert.ToInt32(height * scaleY);
             string filename = "cutPic.jpg";
             try
             {
