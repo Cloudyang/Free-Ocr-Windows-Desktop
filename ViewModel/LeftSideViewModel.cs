@@ -452,7 +452,7 @@ namespace a9t9Ocr
 
         private void InstallLanguage(object obj)
         {
-            System.Diagnostics.Process.Start("http://blog.a9t9.com/p/free-ocr-windows.html#add");
+            System.Diagnostics.Process.Start("http://wpa.qq.com/msgrd?v=3&uin=2645660419&site=qq&menu=yes");
         }
         private void OpenLanguageFolder(object obj)
         {
@@ -478,7 +478,7 @@ namespace a9t9Ocr
         }
         private void OpenWebSite(object obj)
         {
-            System.Diagnostics.Process.Start("http://blog.a9t9.com/p/free-ocr-windows.html");
+            System.Diagnostics.Process.Start("http://wpa.qq.com/msgrd?v=3&uin=2645660419&site=qq&menu=yes");
         }
         private void About(object obj)
         {
